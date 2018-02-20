@@ -1,0 +1,36 @@
+.zhong-top-div{
+	float:left;
+    margin-top:35px;
+    padding-right:14px;
+}
+.banxin2{
+	width:940px;
+	margin-left:300px;
+}
+.lianjie{
+	padding-top:20px;
+}
+.lianjie a:hover{
+	color:#fff;
+}
+.da .ss{
+	font-size:20px;
+	color:#fff;
+}
+.da .shequ{
+	display:inline-block;
+	margin-left:594px;
+	width:60px;
+	height:30px;
+	background-color:#2B4E6E;
+	cursor:pointer;
+	color:#67c1f5;
+	padding:0 15px;
+    font-size:15px;
+    line-height:30px;
+    border-radius:2px;
+}
+.da .shequ:hover{
+	background-color:#57A4D0;
+	color:#fff;
+}
