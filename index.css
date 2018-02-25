@@ -266,7 +266,7 @@ a{
 	position:relative;
 	width:940px;
 }
-#prev,#next{
+.prev,.next{
 	display:block;
 	width:42px;
 	height:100px;
@@ -277,17 +277,17 @@ a{
 	background:linear-gradient( to left, rgba( 0, 0, 0, 0.3) 5%,rgba( 0, 0, 0, 0) 95%);
 	transition: all .5s;
 }
-#prev{
+.prev{
 	left:-42px;
 	background: linear-gradient( to right, rgba( 0, 0, 0, 0.3) 5%,rgba( 0, 0, 0, 0) 95%);	
 }
-#next:hover{
+.next:hover{
 	background: linear-gradient( to left, rgba( 171, 218, 244, 0.3) 5%,rgba( 171, 218, 244, 0) 95%);
 }
-#prev:hover{
+.prev:hover{
 	background: linear-gradient( to right, rgba( 171, 218, 244, 0.3) 5%,rgba( 171, 218, 244, 0) 95%);
 }
-#prev i,#next i{
+.prev i,.next i{
 	display:block;
 	background-image:url(images/left.png);
 	background-repeat: no-repeat;
@@ -295,10 +295,10 @@ a{
 	width:23px;
 	margin: 36px auto;
 }
-#prev i{
+.prev i{
 	background-position: -23px 0px;
 }
-#next i{
+.next i{
 	background-position: 0px 0px;
 }
 .firstlbt-left{
@@ -435,12 +435,12 @@ a{
 }
 /*---------------------------------弹出层-----------------------------*/
 .tanChuCeng{
-	position: absolute;
+	position:absolute;
 	left:-310px;
 	padding:15px;
 	width:275px;
-	background-color: #E1E8EE;
-	z-index: 1;
+	background-color:#E1E8EE;
+	z-index:1;
 	display:none;
 }
 .banner1:hover .tanChuCeng{
@@ -473,7 +473,7 @@ a{
 	background-color:#4E6476;
 }
 .haoping em{
-	font-style: normal;
+	font-style:normal;
 	color:#66C0F4;
 }
 .biaoqian{
@@ -928,7 +928,7 @@ a{
 	color:#626366;
 }
 .neirong{
-	padding:15px 10px 2px 10px;
+	padding:15px 5px 2px 10px;
 	font-size:12px;
 	color:#c6d4df;
 	position:absolute;
@@ -1010,10 +1010,10 @@ a{
 	position:relative;
 	height:180px;
 }
-.fourthlbt #prev{
+.fourthlbt .prev{
 	top:13%;
 }
-.fourthlbt #next{
+.fourthlbt .next{
 	top:13%;
 }
 .fourthlbt .secondlbt-right{

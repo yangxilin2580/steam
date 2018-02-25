@@ -58,8 +58,8 @@ function lunbotuL(prev,div,span){
     createDian($(".banner1"),$(".firstlbt .dian"))               //生成小圆点
     $(".firstlbt .dian span").eq(0).addClass("focus")            //第一个小圆点显示
     clickDian($(".firstlbt .dian span"),$(".banner1"))           //点击小圆点
-    lunbotuR($(".firstlbt #next"),$(".banner1"),$(".firstlbt .dian span")) //向右点击
-    lunbotuL($(".firstlbt #prev"),$(".banner1"),$(".firstlbt .dian span")) //向左点击
+    lunbotuR($(".firstlbt .next"),$(".banner1"),$(".firstlbt .dian span")) //向右点击
+    lunbotuL($(".firstlbt .prev"),$(".banner1"),$(".firstlbt .dian span")) //向左点击
 // 自动播放
     // var autoPlay = setInterval(function(){
     //     $("#next").click();
@@ -82,32 +82,33 @@ $(".gameMin div").mouseleave(function(){
     $(".firstlbt-left .hide").hide()
     $(".firstlbt-left .show").show()
     // autoPlay = setInterval(function(){
-    //     $("#next").click();
+    //     $(".next").click();
     // },3000)
 })
-// var m = 0;
+var m = 0;
 //轮播图中的轮播图
-// setInterval(function(){
-//     tu.hide()
-//     if(m < tu.length-1){
-//         m++;
-//     }else{
-//         m = 0;
-//     }
-//     tu.eq(m).fadeIn()
-// },1000)
+setInterval(function(){
+    $(".tu li").hide()
+    $(".tu li").eq(m).addClass("showMin")
+    if(m < $(".tu li").length-1){
+        m++;
+    }else{
+        m = 0;
+    }
+    $(".tu li").eq(m).fadeIn()
+},1000)
 /*----------------------------第二个轮播图------------------------------*/
     createDian($(".banner2"),$(".secondlbt .dian"))               //生成小圆点
     $(".secondlbt .dian span").eq(0).addClass("focus")            //第一个小圆点显示
     clickDian($(".secondlbt .dian span"),$(".banner2"))           //点击小圆点
-    lunbotuR($(" .secondlbt #next"),$(".banner2"),$(".secondlbt .dian span")) //向右点击
-    lunbotuL($(".secondlbt #prev"),$(".banner2"),$(".secondlbt .dian span")) //向左点击
+    lunbotuR($(" .secondlbt .next"),$(".banner2"),$(".secondlbt .dian span")) //向右点击
+    lunbotuL($(".secondlbt .prev"),$(".banner2"),$(".secondlbt .dian span")) //向左点击
 /*----------------------------第三个轮播图------------------------------*/
     createDian($(".banner3"),$(".thirdlbt .dian"))               //生成小圆点
     $(".thirdlbt .dian span").eq(0).addClass("focus")            //第一个小圆点显示
     clickDian($(".thirdlbt .dian span"),$(".banner3"))           //点击小圆点
-    lunbotuR($(" .thirdlbt #next"),$(".banner3"),$(".thirdlbt .dian span")) //向右点击
-    lunbotuL($(".thirdlbt #prev"),$(".banner3"),$(".thirdlbt .dian span")) //向左点击
+    lunbotuR($(" .thirdlbt .next"),$(".banner3"),$(".thirdlbt .dian span")) //向右点击
+    lunbotuL($(".thirdlbt .prev"),$(".banner3"),$(".thirdlbt .dian span")) //向左点击
 /*-------------------------------选项卡-----------------------------------*/
 for(var j = 0 ; j < $(".xuanxiangka li").length ; j++){      //为每个分类的li设置非法属性即下标
     $(".xuanxiangka li").eq(j).attr("tabxiabiao",j);
@@ -119,19 +120,14 @@ $(".xuanxiangka li").click(function(){                  //点击每个分类的l
     $(".tab").removeClass("show");
     $(".tab").eq(tb).addClass("show");                               
 });
-// $(".xuanxiang").mouseenter(function(){                  //当鼠标移上左边的每个长方块
-//     $(".xuanxiang").removeClass("focus")                //
-//     $(this).addClass("focus")
-// });
-
 $(".tab").mouseenter(function(){
     listTab = $(this);                       //所在的（this）选项卡列表设置非法属性即下标
-    for(var i = 0 ; i < listTab.find(".xuanxiang").length ; i++){
+    for(var i = 0 ; i < listTab.find(".xuanxiang").length; i++){
         listTab.find(".xuanxiang").eq(i).attr("xiabiao",i);
     }
     listTab.find(".xuanxiang").mouseenter(function(){
         listTab.find(".xuanxiang").removeClass("focus")
-        $(this).addClass("focus")
+        $(this).addClass("focus");
         b = $(this).attr("xiabiao");
         listTab.find(".neirong").hide();
         listTab.find(".neirong").eq(b).fadeIn();
@@ -141,5 +137,5 @@ $(".tab").mouseenter(function(){
  createDian($(".fourthlbt .secondlbt-right"),$(".fourthlbt .dian"))    //生成小圆点
 $(".fourthlbt .dian span").eq(0).addClass("focus")            //第一个小圆点显示
 clickDian($(".fourthlbt .dian span"),$(".fourthlbt .secondlbt-right"))    //点击小圆点
-lunbotuR($(" .fourthlbt #next"),$(".fourthlbt .secondlbt-right"),$(".fourthlbt .dian span")) //向右点击
-lunbotuL($(".fourthlbt #prev"),$(".fourthlbt .secondlbt-right"),$(".fourthlbt .dian span")) //向左点击
+lunbotuR($(" .fourthlbt .next"),$(".fourthlbt .secondlbt-right"),$(".fourthlbt .dian span")) //向右点击
+lunbotuL($(".fourthlbt .prev"),$(".fourthlbt .secondlbt-right"),$(".fourthlbt .dian span")) //向左点击
