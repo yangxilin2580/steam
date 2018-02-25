@@ -87,16 +87,17 @@ $(".gameMin div").mouseleave(function(){
 })
 var m = 0;
 //轮播图中的轮播图
-setInterval(function(){
-    $(".tu li").hide()
-    $(".tu li").eq(m).addClass("showMin")
-    if(m < $(".tu li").length-1){
-        m++;
-    }else{
-        m = 0;
-    }
-    $(".tu li").eq(m).fadeIn()
-},1000)
+// setInterval(function(){
+//     $(".banner1 .tu li").hide()
+//     $(".tu li").eq(m).addClass("showMin")
+//     if(m < $(".tu li").length-1){
+//         console.log($(".tu li").length)
+//         m++;
+//     }else{
+//         m = 0;
+//     }
+//     $(".tu li").eq(m).fadeIn()
+// },1000)
 /*----------------------------第二个轮播图------------------------------*/
     createDian($(".banner2"),$(".secondlbt .dian"))               //生成小圆点
     $(".secondlbt .dian span").eq(0).addClass("focus")            //第一个小圆点显示
@@ -126,11 +127,13 @@ $(".tab").mouseenter(function(){
         listTab.find(".xuanxiang").eq(i).attr("xiabiao",i);
     }
     listTab.find(".xuanxiang").mouseenter(function(){
-        listTab.find(".xuanxiang").removeClass("focus")
-        $(this).addClass("focus");
-        b = $(this).attr("xiabiao");
-        listTab.find(".neirong").hide();
-        listTab.find(".neirong").eq(b).fadeIn();
+        if(!$(this).hasClass('focus')){
+            listTab.find(".xuanxiang").removeClass("focus")
+            $(this).addClass("focus");
+            b = $(this).attr("xiabiao");
+            listTab.find(".neirong").hide();
+            listTab.find(".neirong").eq(b).fadeIn();
+        }
     });
 });
 /*----------------------------------第四个轮播图---------------------------*/

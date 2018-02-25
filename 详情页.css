@@ -3,10 +3,6 @@
     margin-top:35px;
     padding-right:14px;
 }
-.banxin2{
-	width:940px;
-	margin-left:300px;
-}
 .lianjie{
 	padding-top:20px;
 }
@@ -14,12 +10,11 @@
 	color:#fff;
 }
 .da .ss{
-	font-size:20px;
+	font-size:26px;
 	color:#fff;
 }
 .da .shequ{
 	display:inline-block;
-	margin-left:594px;
 	width:60px;
 	height:30px;
 	background-color:#2B4E6E;
@@ -29,6 +24,7 @@
     font-size:15px;
     line-height:30px;
     border-radius:2px;
+    float:right;
 }
 .da .shequ:hover{
 	background-color:#57A4D0;
@@ -307,7 +303,7 @@
 	color:#fff;
 }
 .dlc-zi{
-	margin-left:390px;
+	margin-left:374px;
 }
 .dlc .xianshi{
 	margin-top: 1px;
