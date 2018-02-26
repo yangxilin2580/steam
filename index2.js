@@ -14,17 +14,6 @@ for(var i=0;i<$(".lbt").length;i++){
 		$spanList.eq(j).attr("index",j);
 	}
 }
-/*-------------------------自动生成小圆点------------------*/
-for(var i=0;i<$(".lbt").length;i++){
-	var liLength=$(".lbt").eq(i).find(".banner").length;
-	for(var j=0;j<liLength;j++){
-		var $spList=$("<span></span>")
-		$spList.appendTo($(".dian").eq(i))
-		if(j==0){
-			$spList.addClass("focus")
-		}
-	}
-}
 /*-------------------------变换轮播的图片-------------------*/
 function changeImg(index,obj){
 	var $dianList = $(obj).closest(".lbt").find('.dian').find("span");
@@ -65,26 +54,45 @@ $(".prev").click(function(){
 		}
 	}
 })
+/*-------------------------自动生成小圆点------------------*/
+for(var i=0;i<$(".lbt").length;i++){
+	var liLength=$(".lbt").eq(i).find(".banner").length;
+	for(var j=0;j<liLength;j++){
+		var $spList=$("<span></span>")
+		$spList.appendTo($(".dian").eq(i))
+		$spList.attr("index",j)
+		if(j==0){
+			$spList.addClass("focus")
+		}
+	}
+}
 /*-------------------------小圆点点击事件-------------------*/
 $(".dian span").click(function(){
-			$liList = $(this).closest(".lbt").find(".banner");
-			var n = this.getAttribute("index");
-			console.log(n)
-			for(var i = 0; i < $liList.length; i++){
-				if($liList.eq(i).hasClass("show")){
-					changeImg(n,this)
-					break;
-				}
-			}
+	$liList = $(this).closest(".lbt").find(".banner");
+	var n = this.getAttribute("index");
+	for(var i = 0; i < $liList.length; i++){
+		if($liList.eq(i).hasClass("show")){
+			changeImg(n,this)
+			break;
+		}
+	}
 })
 /*--------------------第一个轮播图里面的事件-------------------*/
 // 自动播放
-    // var autoPlay = setInterval(function(){
-    //     $("#next").click();
-    // },3000)
+    var autoPlay = setInterval(function(){
+        $(".firstlbt .next").click();
+    },3000)
+    $(".firstlbt").mouseenter(function(){
+    	clearInterval(autoPlay)
+    })
+     $(".firstlbt").mouseleave(function(){
+    	autoPlay = setInterval(function(){
+        	$(".firstlbt .next").click();
+    	},3000)
+    })
 //轮播图里面的小div事件;鼠标移上右边div时更换当前图片
 $(".firstlbt .banner").mouseenter(function(){
-    // clearInterval(autoPlay)
+	clearInterval(autoPlay)
     var minDiv = $(this).find(".gameMin div")
     var maxDiv1 = $(this).find(".firstlbt-left .show")
     var maxDiv2 = $(this).find(".firstlbt-left .hide")
@@ -99,23 +107,26 @@ $(".firstlbt .banner").mouseenter(function(){
 $(".gameMin div").mouseleave(function(){
     $(".firstlbt-left .hide").hide()
     $(".firstlbt-left .show").show()
-    // autoPlay = setInterval(function(){
-    //     $(".next").click();
-    // },3000)
 })
-var m = 0;
-//轮播图中的轮播图
-// setInterval(function(){
-//     $(".banner1 .tu li").hide()
-//     $(".tu li").eq(m).addClass("showMin")
-//     if(m < $(".tu li").length-1){
-//         console.log($(".tu li").length)
-//         m++;
-//     }else{
-//         m = 0;
-//     }
-//     $(".tu li").eq(m).fadeIn()
-// },1000)
+//弹出层
+$(".lbt .banner").mouseenter(function(){
+	$(this).find(".tanChuCeng").fadeIn();
+	var $imgList=$(this).find(".tanChuCeng img")
+	var n=0;
+	imgAuto=setInterval(function(){
+		if(n<$imgList.length-1){
+			n++;
+		}
+		else{
+			n=0;
+		}
+		$imgList.hide();
+		$imgList.eq(n).fadeIn();
+	},3000)
+}).mouseleave(function(){     //链式调用
+	$(this).find(".tanChuCeng").fadeOut();
+	clearInterval(imgAuto);
+})
 /*-----------------------------------选项卡---------------------------------------*/
 for(var j = 0 ; j < $(".xuanxiangka li").length ; j++){      //为每个分类的li设置非法属性即下标
     $(".xuanxiangka li").eq(j).attr("tabxiabiao",j);
