@@ -153,3 +153,92 @@ $(".tab").mouseenter(function(){
         }
     });
 });
+/*----------------------------详情页js--------------------------*/
+$(".div_item").eq(0).find(".item_kuang").addClass("show")
+var $length=$(".div_item").length
+var point="right"//默认方向
+var next=[]
+var prev=[]
+for(var i=0;i<$length;i++){
+	if(i>2 && i%2==0){
+		next.push(i)
+	}
+	if(i<$length-4 && i%2!=0){
+		prev.push(i)
+	}
+}
+//点击图片逻辑
+var itemWrap=$("#shitu_all");
+var kuangList=itemWrap.find(".item_kuang");
+//当前所在的张数
+var adv={};
+adv.m=0;
+//可视区域最左侧图片的下标
+adv.n=0;
+adv.count=kuangList.length;
+function changekuang(index){
+	kuangList.removeClass('show');
+	kuangList.eq(index).addClass("show")
+}
+function moveView(newIndex){
+	var R=adv.count-adv.m;
+	var L=adv.n;
+	if(R>5){
+		itemWrap.animate({
+			"marginLeft":-(adv.m)*120
+		});
+	}
+	else{
+		if(L!==adv.count-5){
+			itemWrap.animate({
+				"marginLeft":-(adv.count-R)*120
+			});
+		}
+	}
+	adv.n=newIndex || adv.m;
+}
+$(".tuodongR").click(function(){
+	++adv.m;
+	if(adv.m ==adv.count){
+		adv.m=0;
+		moveView();
+	}
+	if(adv.m==adv.n+5){
+		moveView()
+	}
+	// if(adv.count-adv.m<5){
+	// 	moveView(adv.count-5)
+	// }
+	changekuang(adv.m)
+})
+// $(".tuo_tiao").mousedown(function(event){
+// 	var X=event.clientX;
+// 	var ml=parseInt(this.style.left)
+// 	var _this=this;
+// 	var scrollableWidth = $(this).parent().width() - $(this).width();
+// 	body.onselectstart = function(){
+// 		return false;
+// 	}
+// 	window.onmousemove=function(event){
+// 		var x=event.clientX;
+// 		var nowml=parseInt(_this.style.left);
+// 		if(x - X + ml > scrollableWidth){
+// 			return
+// 		}
+// 		if(x - X + ml < 0){
+// 			return 
+// 		}
+// 		else{
+// 			_this.style.left = x - X + ml + "px";
+// 		}
+// 		var progress = Math.round(nowml/scrollableWidth * 100) / 100;
+// 		itemWrap.css({
+// 			marginLeft:-((itemWrap.width() - 600) * progress)
+// 		})
+// 	}
+// 	window.onmouseup = function(){
+// 		window.onmousemove = null;
+// 		body.onselectstart = null;
+// 	}
+// })
+
