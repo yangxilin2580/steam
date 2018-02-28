@@ -191,7 +191,7 @@ function moveView(newIndex){
 	else{
 		if(L!==adv.count-5){
 			itemWrap.animate({
-				"marginLeft":-(adv.count-R)*120
+				"marginLeft":-(adv.count-R-1)*120
 			});
 		}
 	}
@@ -206,11 +206,34 @@ $(".tuodongR").click(function(){
 	if(adv.m==adv.n+5){
 		moveView()
 	}
-	// if(adv.count-adv.m<5){
-	// 	moveView(adv.count-5)
-	// }
+	if(adv.count-adv.m<5){
+		moveView(adv.count-5)
+	}
 	changekuang(adv.m)
 })
+// $(".tuodongL").click(function(){
+// 	++adv.m;
+// 	if(adv.m ==adv.count){
+// 		adv.m=0;
+// 		moveView();
+// 	}
+// 	if(adv.m==adv.n+5){
+// 		moveView()
+// 	}
+// 	if(adv.count-adv.m<5){
+// 		moveView(adv.count-5)
+// 	}
+// 	changekuang(adv.m)
+// })
+//点击图片也可以切换
+var itemList=$(".div_item")
+for(var i=0;i<itemList.length;i++){
+	$(".div_item").eq(i).click(function(){
+		$(".div_item").find(".item_kuang").removeClass("show")
+		$(this).find(".item_kuang").addClass("show")	
+	})
+}
+
 // $(".tuo_tiao").mousedown(function(event){
 // 	var X=event.clientX;
 // 	var ml=parseInt(this.style.left)
